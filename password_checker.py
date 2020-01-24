@@ -1,81 +1,70 @@
 import re
 def password_is_valid(password):
-     ## password should exist
-    if (password != None):
+
+     ############# password should exist ################
+
+    if len(password) != 0:
         print("password exist")
     else:
         raise Exception("password should exist")
     
     
-     ## length of password is long enough
+     ############# length of password is long enough #######
     
     if len(password) > 8:
         print("Valid length")
     else:
         raise Exception('password should be longer than than 8 characters')
 
-     ## lowercase characters
+     ############## lowercase characters ###############
     
-    character = r'[a-z]'
+    if (any(c.islower() for c in password)):
+        print("Valid atleast one lowercase letter")
+    else:
+        raise Exception("password should have at least one lowercase letter")
 
-    for c in character:
-        if c != character: 
-            print("Valid atleast one lowercase letter")
-        else:
-            raise Exception("password should have at least one lowercase letter")
+     ############### Uppercase characters ############### 
+                 
+    if (any(c.isupper() for c in password)):
+        print("Valid atleast one uppercase letter")
+    else:
+        raise Exception("password should have at least one uppercase letter")   
 
-     ## Uppercase characters 
-     
-    characters = r'[A-Z]'             
-    for i in characters: 
-        if i != characters:
-            print("Valid atleast one uppercase letter")
-        else:
-            raise Exception("password should have at least one uppercase letter") 
-
-     # Digits 
+     ################## Digits ################ 
 
     if re.search('[0-9]',password):
         print("valid number of Digits")
     else:
         raise Exception('password should at least have one digit')
 
-     #special characters
+     ################ special characters ################
     
-     # special = r"[+]"
-     # for s in special:
-    if re.search(r"[+]",password):
+    if re.search(r"[!@#$%^&*(),.?:{}|<>]", password):
         print("valid number of special characters")
     else:
         raise Exception('password should have at least one special character')
 
+#password_is_valid("")
 
+################ fuction that callings the 3 arguments ###################
 
-## fuction that callings the 3 arguments
 def password_is_ok(password):
     count = 0
-    if (password != None):
-        count += 1
+    if (password != 0):
         if len(password) > 8:
-            count += 1
-            characters = r'[A-Z]'
-            if characters:
+            if (any(c.islower() for c in password)) or re.search(r"[!@#$%^&*(),.?:{}|<>]", password) or (any(c.isupper() for c in password)) or re.search(r"[!@#$%^&*(),.?:{}|<>]", password):
                 count += 1                              
+                    
 
-
-    if count > 3:
-        return True
+            else:
+                pass
+        else:
+            raise Exception('Password is never Ok if less than 8 characters')
     else:
-        return False
+        raise Exception('Password is never Ok if does not exist')
 
-    ### never ok statement
-    count = 0
-    if (password == 0):
-        count += 1
-        if len(password) > 8:
-            count += 1
-        
-    if count < 2:
-        print("password is never Ok")        
-password_is_ok('jhfgdhsjaibr2?+')
+
+    if count ==1:
+        return True    
+##password_is_ok('')
 

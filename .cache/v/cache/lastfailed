@@ -2,8 +2,5 @@
   "password_checker.py": true, 
   "test_password_checker.py::test_password_is_okay": true, 
   "test_password_checker.py::test_password_is_valid": true, 
-  "test_password_is_ok.py": true, 
-  "test_password_is_ok.py::test_password_is_okay": true, 
-  "test_password_is_valid.py": true, 
-  "test_password_is_valid.py::test_password_is_valid": true
+  "test_password_is_ok.py::test_password_is_okay": true
 }
