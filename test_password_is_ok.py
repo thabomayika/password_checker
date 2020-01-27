@@ -11,10 +11,10 @@ def test_password_is_ok():
     with pytest.raises(Exception):
         assert password_is_ok("jjjjjjjjjjj") == Exception
         assert password_is_ok("JJJJJJJJJJJ") == Exception
-        assert password_is_ok("99999999999") == Exception
+        assert password_is_ok("16161616161") == Exception
         assert password_is_ok("!@#$$%^&*()") == Exception
-        assert password_is_ok("jjjjjjjjjjj") == Exception
-        assert password_is_ok("jJjjjjjjjjj") == Exception
+        assert password_is_ok("ttttttttttt") == Exception
+        assert password_is_ok("tTttttttttt") == Exception
         assert password_is_ok("jjjJjjjjjj@1") == Exception
 
-    assert password_is_ok("madk@kdfj") == True
+    assert password_is_ok("madk@tcjf") == True
